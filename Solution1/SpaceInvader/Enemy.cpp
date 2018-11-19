@@ -13,7 +13,7 @@ void Enemy::draw() {
 void Enemy::update() {
 	m_velocity.setX(0);
 	m_velocity.setY(0);
-	m_currentFrame = int(((SDL_GetTicks() / 100) % 2));
+	m_currentFrame = int(((SDL_GetTicks() / 300) % 2));
 	SDLGameObject::update();
 }
 
