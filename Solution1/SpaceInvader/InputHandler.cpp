@@ -93,18 +93,6 @@ bool InputHandler::isKeyDown(SDL_Scancode key) {
 	return false;
 }
 
-bool InputHandler::isKeyPressed(SDL_Scancode key) {
-	if (m_keystates != 0) {
-		if (m_keystates[key] == 1) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
-	return false;
-}
-
 bool InputHandler::getMouseButtonState(int buttonNumber) {
 	return m_mouseButtonStates[buttonNumber];
 }

@@ -4,6 +4,7 @@ using namespace std;
 Projectile::Projectile(const LoaderParams* pParams) :
 
 	SDLGameObject(pParams) {
+	std::cout << "creating a bullet" << std::endl;
 }
 
 void Projectile::draw() {
@@ -28,7 +29,7 @@ void Projectile::Collide(GameObject* pCollider) {
 			if (*iter == this)
 			{
 				TheGame::Instance()->getGameObjects()->erase(iter);
-				break;
+				break;      
 			}
 		}
 	}

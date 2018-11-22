@@ -16,7 +16,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			return false;
 		}
 
-		if (!TheTextureManager::Instance()->load("Assets/Horizontal (2).png", "wall", m_pRenderer)) {
+		if (!TheTextureManager::Instance()->load("Assets/Horizontal (2).png", "enemy1", m_pRenderer)) {
 			return false;
 		}
 
@@ -29,11 +29,11 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		}
 
 		m_gameObjects.push_back(new Player(new LoaderParams(250, 500, 64, 64, "animate", "Player")));
-		m_gameObjects.push_back(new Enemy(new LoaderParams(100, 100, 64, 64, "wall", "Enemy")));
-		m_gameObjects.push_back(new Enemy(new LoaderParams(200, 100, 64, 64, "wall", "Enemy")));
-		m_gameObjects.push_back(new Enemy(new LoaderParams(300, 100, 64, 64, "wall", "Enemy")));
-		m_gameObjects.push_back(new Enemy(new LoaderParams(400, 100, 64, 64, "wall", "Enemy")));
-		m_gameObjects.push_back(new Enemy(new LoaderParams(500, 100, 64, 64, "wall", "Enemy")));
+		m_gameObjects.push_back(new Enemy(new LoaderParams(100, 100, 64, 64, "enemy1", "Enemy")));
+		m_gameObjects.push_back(new Enemy(new LoaderParams(200, 100, 64, 64, "enemy1", "Enemy")));
+		m_gameObjects.push_back(new Enemy(new LoaderParams(300, 100, 64, 64, "enemy1", "Enemy")));
+		m_gameObjects.push_back(new Enemy(new LoaderParams(400, 100, 64, 64, "enemy1", "Enemy")));
+		m_gameObjects.push_back(new Enemy(new LoaderParams(500, 100, 64, 64, "enemy1", "Enemy")));
 	}
 	else {
 		m_bRunning = false;

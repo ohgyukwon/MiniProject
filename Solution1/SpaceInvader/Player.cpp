@@ -2,7 +2,6 @@
 
 Player::Player(const LoaderParams* pParams) :
 	SDLGameObject(pParams) {
-
 }
 
 void Player::draw() {
@@ -34,15 +33,10 @@ void Player::handleInput() {
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT)) {
 		m_velocity.setX(-2);
 	}
-	//if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP)) {
-	//	m_velocity.setY(-2);
-	//}
-	//if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_DOWN)) {
-	//	m_velocity.setY(2);
-	//}
-	if (TheInputHandler::Instance()->isKeyPressed(SDL_SCANCODE_SPACE)) {
-		if (bulletActive == 0) {
-			TheGame::Instance()->getGameObjects()->push_back(new Projectile(new LoaderParams(this->m_position.getX() + 25, this->m_position.getY(), 8, 48, "bullet", "Bullet")));
-		}
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_SPACE) && bulletstate == READY) {
+		TheGame::Instance()->getGameObjects()->push_back(new Projectile(new LoaderParams(this->m_position.getX() + 28, this->m_position.getY(), 4, 24, "bullet", "Bullet")));
+		bulletstate = FIRED;
+		// 총알 없어지면 다시 READY
+		// 빗나간 총알은 게임 화면 밖에 안보이는 벽 생성해서 충돌 처리
 	}
 }
