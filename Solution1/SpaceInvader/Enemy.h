@@ -11,7 +11,7 @@ public:
 	virtual void draw();
 	virtual void update();
 	virtual void clean();
-	virtual void Collide(GameObject* pCollider);
+	virtual void Collide(SDLGameObject* pCollider);
 	virtual int getPositionX() { return this->m_position.getX(); }
 	virtual int getPositionY() { return this->m_position.getY(); }
 	virtual int getWidth() { return this->m_width; }

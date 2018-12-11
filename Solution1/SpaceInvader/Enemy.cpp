@@ -21,7 +21,7 @@ void Enemy::clean() {
 
 }
 
-void Enemy::Collide(GameObject* pCollider) {
+void Enemy::Collide(SDLGameObject* pCollider) {
 	if (TheCollider::Instance()->Collision(this, pCollider) && pCollider->getTag() == "Bullet") {
 		//m_textureID = "wall_broken";
 	}

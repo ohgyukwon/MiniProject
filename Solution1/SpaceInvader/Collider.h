@@ -16,7 +16,7 @@ public:
 	}
 	void update();
 	void clean();
-	bool Collision(GameObject* object1, GameObject* object2);
+	bool Collision(SDLGameObject* object1, SDLGameObject* object2);
 private:
 	Collider();
 	~Collider();

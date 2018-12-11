@@ -5,11 +5,15 @@
 #include "Enemy.h"
 #include "InputHandler.h"
 #include "Collider.h"
+#include "GameStateMachine.h"
+#include "MenuState.h"
+#include "PlayState.h"
 
 class Game {
 private:
 	Game() {}
 	static Game* s_pInstance;
+	GameStateMachine* m_pGameStateMachine;
 	std::map<std::string, SDL_Texture*> m_textureMap;
 	std::vector<GameObject*> m_gameObjects;
 	std::vector<GameObject*>::iterator iter1, iter2;
@@ -22,6 +26,7 @@ public:
 	void render();
 	bool running() { return m_bRunning; }
 	SDL_Renderer* getRenderer() { return m_pRenderer; }
+	GameStateMachine* getStateMachine() { return m_pGameStateMachine; }
 	void update();
 	void clean();
 	void quit();

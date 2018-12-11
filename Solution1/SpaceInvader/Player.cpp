@@ -22,7 +22,7 @@ void Player::clean() {
 
 }
 
-void Player::Collide(GameObject* pCollider) {
+void Player::Collide(SDLGameObject* pCollider) {
 
 }
 

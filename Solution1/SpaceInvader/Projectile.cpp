@@ -20,7 +20,7 @@ void Projectile::update() {
 	SDLGameObject::update();
 }
 
-void Projectile::Collide(GameObject* pCollider) {
+void Projectile::Collide(SDLGameObject* pCollider) {
 	if (TheCollider::Instance()->Collision(this, pCollider) && pCollider->getTag() == "Enemy") {
 		std::vector<GameObject*>::iterator iter;
 		std::vector<GameObject*>::iterator iterEnd = TheGame::Instance()->getGameObjects()->end();

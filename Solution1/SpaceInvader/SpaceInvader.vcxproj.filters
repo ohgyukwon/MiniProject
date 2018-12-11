@@ -37,6 +37,30 @@
     <Filter Include="Main">
       <UniqueIdentifier>{840b11f3-a36f-42e7-9667-e0dc9b6ed64c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameState">
+      <UniqueIdentifier>{daba7247-de4b-47f0-a435-5acac32e2e6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameStateMachine">
+      <UniqueIdentifier>{bd182a17-e448-4254-b19f-86b5e23eb1ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayState">
+      <UniqueIdentifier>{5e258a23-e572-4d48-9725-2caca327f8ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PauseState">
+      <UniqueIdentifier>{b35e2f65-a119-42b3-b6dd-86be8c4e54f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameOverState">
+      <UniqueIdentifier>{2c0406e3-e030-4008-93cb-c5dc3d705243}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MenuState">
+      <UniqueIdentifier>{9ffe817f-04ce-4a2c-8099-94139d8da097}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MenuButton">
+      <UniqueIdentifier>{57c31fcd-263b-4a0d-95af-c08fa11e6323}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AnimatedGraphics">
+      <UniqueIdentifier>{ca0d0cf7-fec5-4c92-8256-bd97a58f875c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Collider.cpp">
@@ -65,6 +89,27 @@
     </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayState.cpp">
+      <Filter>PlayState</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseState.cpp">
+      <Filter>PauseState</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuButton.cpp">
+      <Filter>MenuButton</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuState.cpp">
+      <Filter>MenuState</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOverState.cpp">
+      <Filter>GameOverState</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimatedGraphics.cpp">
+      <Filter>AnimatedGraphics</Filter>
+    </ClCompile>
+    <ClCompile Include="GameStateMachine.cpp">
+      <Filter>GameStateMachine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -100,6 +145,30 @@
     </ClInclude>
     <ClInclude Include="InputHandler.h">
       <Filter>InputHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>GameState</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStateMachine.h">
+      <Filter>GameStateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverState.h">
+      <Filter>GameOverState</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimatedGraphics.h">
+      <Filter>AnimatedGraphics</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuState.h">
+      <Filter>MenuState</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuButton.h">
+      <Filter>MenuButton</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseState.h">
+      <Filter>PauseState</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayState.h">
+      <Filter>PlayState</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -12,28 +12,8 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 		m_bRunning = true;
 
-		if (!TheTextureManager::Instance()->load("Assets/player.png", "animate", m_pRenderer)) {
-			return false;
-		}
-
-		if (!TheTextureManager::Instance()->load("Assets/Horizontal (2).png", "enemy1", m_pRenderer)) {
-			return false;
-		}
-
-		if (!TheTextureManager::Instance()->load("Assets/wall_broken.png", "wall_broken", m_pRenderer)) {
-			return false;
-		}
-
-		if (!TheTextureManager::Instance()->load("Assets/bullet2.png", "bullet", m_pRenderer)) {
-			return false;
-		}
-
-		m_gameObjects.push_back(new Player(new LoaderParams(250, 500, 64, 64, "animate", "Player")));
-		m_gameObjects.push_back(new Enemy(new LoaderParams(100, 100, 64, 64, "enemy1", "Enemy")));
-		m_gameObjects.push_back(new Enemy(new LoaderParams(200, 100, 64, 64, "enemy1", "Enemy")));
-		m_gameObjects.push_back(new Enemy(new LoaderParams(300, 100, 64, 64, "enemy1", "Enemy")));
-		m_gameObjects.push_back(new Enemy(new LoaderParams(400, 100, 64, 64, "enemy1", "Enemy")));
-		m_gameObjects.push_back(new Enemy(new LoaderParams(500, 100, 64, 64, "enemy1", "Enemy")));
+		m_pGameStateMachine = new GameStateMachine();
+		m_pGameStateMachine->changeState(MenuState::Instance());
 	}
 	else {
 		m_bRunning = false;
@@ -56,13 +36,13 @@ void Game::update() {
 		m_gameObjects[i]->update();
 	}
 
-	for (int i = 0; i < m_gameObjects.size() - 1; i++) {
-		for (int j = i + 1; j < m_gameObjects.size(); j++) {
-			if (TheCollider::Instance()->Collision(m_gameObjects[i], m_gameObjects[j]))
-				m_gameObjects[i]->Collide(m_gameObjects[j]);
-			m_gameObjects[j]->Collide(m_gameObjects[i]);
-		}
-	}
+	//for (int i = 0; i < m_gameObjects.size() - 1; i++) {
+	//	for (int j = i + 1; j < m_gameObjects.size(); j++) {
+	//		if (TheCollider::Instance()->Collision(m_gameObjects[i], m_gameObjects[j]))
+	//			m_gameObjects[i]->Collide(m_gameObjects[j]);
+	//		m_gameObjects[j]->Collide(m_gameObjects[i]);
+	//	}
+	//}
 }
 
 void Game::clean() {

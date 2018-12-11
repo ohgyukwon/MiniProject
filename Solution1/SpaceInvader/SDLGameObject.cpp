@@ -26,7 +26,7 @@ void SDLGameObject::update() {
 	m_position += m_velocity;
 }
 
-void SDLGameObject::Collide(GameObject* pCollider) {
+void SDLGameObject::Collide(SDLGameObject* pCollider) {
 
 }
 
