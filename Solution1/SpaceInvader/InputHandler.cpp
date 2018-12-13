@@ -104,3 +104,20 @@ Vector2D* InputHandler::getMousePosition() {
 void InputHandler::reset() {
 
 }
+
+bool InputHandler::isKeyPressed(SDL_Scancode key) {
+	if (m_keystates != 0) {
+		if (m_keystates[key] == 1) {
+			push++;
+
+			if (push == 1) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		push = 0;
+	}
+	return false;
+}

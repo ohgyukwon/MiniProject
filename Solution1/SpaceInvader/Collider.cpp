@@ -15,11 +15,6 @@ void Collider::clean() {
 }
 
 bool Collider::Collision(SDLGameObject* object1, SDLGameObject* object2) {
-	//if (object1 == object2) return false;
-	//if ((object1->getTag() == "Player" && object2->getTag() == "Bullet") ||
-		//(object1->getTag() == "Bullet" && object2->getTag() == "Player"))
-		//return false;
-
 	rc1_left = object1->getPosition().getX();
 	rc1_right = object1->getPosition().getX() + object1->getWidth();
 	rc1_top = object1->getPosition().getY();

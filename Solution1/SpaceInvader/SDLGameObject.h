@@ -10,14 +10,15 @@ public:
 	virtual void update();
 	virtual void clean();
 	virtual void Collide(SDLGameObject* pCollider);
-	virtual Vector2D getPosition() { return this->m_position;}
+	virtual Vector2D getPosition() { return this->m_position; }
 	virtual int getWidth() { return this->m_width; }
 	virtual int getHeight() { return this->m_height; }
-	virtual std::string getTag() { return this->m_tag; };
+	virtual std::string getTag() { return this->m_tag; }
 protected:
 	Vector2D m_position;
 	Vector2D m_velocity;
 	Vector2D m_acceleration;
+	float m_gravity;
 	int m_width;
 	int m_height;
 	int m_currentRow;

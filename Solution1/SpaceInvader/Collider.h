@@ -19,12 +19,9 @@ public:
 	bool Collision(SDLGameObject* object1, SDLGameObject* object2);
 private:
 	Collider();
-	~Collider();
 	int rc1_left, rc1_right, rc1_top, rc1_bottom;
 	int rc2_left, rc2_right, rc2_top, rc2_bottom;
 	static Collider* s_pInstance;
-	std::vector<GameObject*> v;
-	std::vector<GameObject*>::iterator iter1, iter2;
 };
 
 typedef Collider TheCollider;

@@ -24,31 +24,16 @@ void GameOverState::render() {
 }
 
 bool GameOverState::onEnter() {
-	if (!TheTextureManager::Instance()->load("Assets/gameover.png", "gameoverText", TheGame::Instance()->getRenderer())) {
-		return false;
-	}
-	if (!TheTextureManager::Instance()->load("Assets/main.png", "mainButton", TheGame::Instance()->getRenderer())) {
-		return false;
-	}
-	if (!TheTextureManager::Instance()->load("Assets/restart.png", "restartButton", TheGame::Instance()->getRenderer())) {
-		return false;
-	}
-	if (!TheTextureManager::Instance()->load("Assets/player.png", "playerSprite", TheGame::Instance()->getRenderer())) {
-		return false;
-	}
-	if (!TheTextureManager::Instance()->load("Assets/background.png", "background", TheGame::Instance()->getRenderer())) {
-		return false;
-	}
-	GameObject* gameOverText = new AnimatedGraphics(new LoaderParams(500, 200, 190, 30, "gameoverText", "menuButton"), 2);
-	GameObject* button1 = new MenuButton(new LoaderParams(100, 300, 400, 100, "mainButton", "menuButton"), s_gameOverToMain);
-	GameObject* button2 = new MenuButton(new LoaderParams(100, 100, 200, 80, "restartButton", "menuButton"), s_restartPlay);
-	GameObject* playerSprite = new AnimatedGraphics(new LoaderParams(100, 100, 30, 30, "playerSprite", "menuButton"), 2);
-	GameObject* background = new AnimatedGraphics(new LoaderParams(0, 0, 1200, 800, "background", "menuButton"), 2);
+	if (!TheTextureManager::Instance()->load("Assets/gameover.png", "gameoverText", TheGame::Instance()->getRenderer())) return false;
+	if (!TheTextureManager::Instance()->load("Assets/main.png", "mainButton", TheGame::Instance()->getRenderer())) return false;
+	if (!TheTextureManager::Instance()->load("Assets/restart.png", "restartButton", TheGame::Instance()->getRenderer())) return false;
+
+	GameObject* gameOverText = new AnimatedGraphics(new LoaderParams(500, 200, 190, 30, "gameoverText", "TEXT"), 2);
+	GameObject* button1 = new MenuButton(new LoaderParams(100, 300, 400, 100, "mainButton", "BUTTON"), s_gameOverToMain);
+	GameObject* button2 = new MenuButton(new LoaderParams(100, 100, 200, 80, "restartButton", "BUTTON"), s_restartPlay);
 	m_gameObjects.push_back(gameOverText);
 	m_gameObjects.push_back(button1);
 	m_gameObjects.push_back(button2);
-	m_gameObjects.push_back(playerSprite);
-	m_gameObjects.push_back(background);
 	std::cout << "entering GameOverState\n";
 	return true;
 }
@@ -61,8 +46,6 @@ bool GameOverState::onExit() {
 	TheTextureManager::Instance()->clearFromTextureMap("gameoverText");
 	TheTextureManager::Instance()->clearFromTextureMap("mainButton");
 	TheTextureManager::Instance()->clearFromTextureMap("restartButton");
-	TheTextureManager::Instance()->clearFromTextureMap("playerSprite");
-	TheTextureManager::Instance()->clearFromTextureMap("background");
 	TheInputHandler::Instance()->reset();
 	std::cout << "exiting GameOverState\n";
 	return true;

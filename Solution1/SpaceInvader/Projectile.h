@@ -1,10 +1,10 @@
 #pragma once
 
 #include "SDLGameObject.h"
-#include "InputHandler.h"
 #include "TextureManager.h"
 #include "Game.h"
 #include "Player.h"
+#include "Collider.h"
 
 class Projectile :public SDLGameObject {
 public:

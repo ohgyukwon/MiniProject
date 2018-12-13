@@ -7,7 +7,7 @@ int main(int argc, char* argv[]) {
 	Uint32 frameStart, frameTime;
 
 	std::cout << "game init attempt...\n";
-	if (TheGame::Instance()->init("Space Invader", 100, 100, 640, 640, false)) {
+	if (TheGame::Instance()->init("Space Invader", 100, 100, 800, 600, false)) {
 		std::cout << "game init success!\n";
 		while (TheGame::Instance()->running()) {
 			frameStart = SDL_GetTicks();

@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "InputHandler.h"
 
 Game* Game::s_pInstance = 0;
 
@@ -24,7 +25,8 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 void Game::render() {
 	SDL_RenderClear(m_pRenderer);
-	SDL_SetRenderDrawColor(m_pRenderer, 0, 0, 0, 255);	// ¹è°æ »ö±ò
+	//SDL_SetRenderDrawColor(m_pRenderer, 0, 150, 255, 255);	// ¹è°æ »ö±ò
+	m_pGameStateMachine->render();
 	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++) {
 		m_gameObjects[i]->draw();
 	}
@@ -35,14 +37,7 @@ void Game::update() {
 	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++) {
 		m_gameObjects[i]->update();
 	}
-
-	//for (int i = 0; i < m_gameObjects.size() - 1; i++) {
-	//	for (int j = i + 1; j < m_gameObjects.size(); j++) {
-	//		if (TheCollider::Instance()->Collision(m_gameObjects[i], m_gameObjects[j]))
-	//			m_gameObjects[i]->Collide(m_gameObjects[j]);
-	//		m_gameObjects[j]->Collide(m_gameObjects[i]);
-	//	}
-	//}
+	m_pGameStateMachine->update();
 }
 
 void Game::clean() {
@@ -55,7 +50,9 @@ void Game::clean() {
 
 void Game::handleEvents() {
 	TheInputHandler::Instance()->update();
-	TheCollider::Instance()->update();
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN)) {
+		m_pGameStateMachine->changeState(PlayState::Instance());
+	}
 }
 
 void Game::quit() {

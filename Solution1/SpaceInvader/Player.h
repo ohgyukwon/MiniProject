@@ -2,13 +2,9 @@
 
 #include "SDLGameObject.h"
 #include "InputHandler.h"
+#include "TextureManager.h"
 #include "Game.h"
 #include "Projectile.h"
-
-enum bulletState {
-	READY,
-	FIRED 
-};
 
 class Player :public SDLGameObject {
 public:
@@ -16,10 +12,8 @@ public:
 	virtual void draw();
 	virtual void update();
 	virtual void clean();
-	virtual void Collide(SDLGameObject* pCollider);
 private:
-	int bulletActive = 1;
 	void handleInput();
-	std::vector<GameObject*> m_bullets;
-	bulletState bulletstate = READY;
+	int fireRate = 0;
+	bool bulletReady = true;
 };

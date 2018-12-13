@@ -3,8 +3,6 @@
 #include "TextureManager.h"
 #include "Player.h"
 #include "Enemy.h"
-#include "InputHandler.h"
-#include "Collider.h"
 #include "GameStateMachine.h"
 #include "MenuState.h"
 #include "PlayState.h"
@@ -16,7 +14,6 @@ private:
 	GameStateMachine* m_pGameStateMachine;
 	std::map<std::string, SDL_Texture*> m_textureMap;
 	std::vector<GameObject*> m_gameObjects;
-	std::vector<GameObject*>::iterator iter1, iter2;
 	SDL_Window * m_pWindow;
 	SDL_Renderer* m_pRenderer;
 	bool m_bRunning;
@@ -30,7 +27,6 @@ public:
 	void update();
 	void clean();
 	void quit();
-	std::vector<GameObject*> *getGameObjects() { return &m_gameObjects; }
 
 	static Game* Instance() {
 		if (s_pInstance == 0) {

@@ -23,8 +23,9 @@ public:
 		return s_pInstance;
 	}
 	bool checkCollision(SDLGameObject* p1, SDLGameObject* p2);
+	std::vector<SDLGameObject*> *getGameObjects() { return &m_gameObjects; }
 private:
 	static const std::string s_playID;
 	static PlayState* s_pInstance;
-	std::vector<GameObject*> m_gameObjects;
+	std::vector<SDLGameObject*> m_gameObjects;
 };

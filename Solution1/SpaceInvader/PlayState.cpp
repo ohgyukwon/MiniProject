@@ -11,12 +11,12 @@ void PlayState::update() {
 	for (int i = 0; i < m_gameObjects.size(); i++) {
 		m_gameObjects[i]->update();
 	}
-	for (int i = 1; i < m_gameObjects.size(); i++) {
-		if (checkCollision(
-			dynamic_cast<SDLGameObject*>(m_gameObjects[0]),
-			dynamic_cast<SDLGameObject*>(m_gameObjects[i])))
-		{
-			TheGame::Instance()->getStateMachine()->changeState(GameOverState::Instance());
+	// 적이 둘 이상일 때, 총알과 적 둘 다 제거
+	// 태그 비교하여 적절하지 않은 경우에는 return?
+	// NULL인 경우에도 return?
+	for (int i = 6; i < m_gameObjects.size(); i++) {
+		if (checkCollision(dynamic_cast<SDLGameObject*>(m_gameObjects[1]), dynamic_cast<SDLGameObject*>(m_gameObjects[i]))) {
+			m_gameObjects[1]->Collide(m_gameObjects[i]);
 		}
 	}
 }
@@ -28,24 +28,19 @@ void PlayState::render() {
 }
 
 bool PlayState::onEnter() {
-	if (!TheTextureManager::Instance()->load("Assets/player.png", "animate", TheGame::Instance()->getRenderer())) {
-		return false;
-	}
+	if (!TheTextureManager::Instance()->load("Assets/player.png", "player", TheGame::Instance()->getRenderer())) return false;
+	if (!TheTextureManager::Instance()->load("Assets/enemy_1.png", "enemy_1", TheGame::Instance()->getRenderer())) return false;
+	if (!TheTextureManager::Instance()->load("Assets/enemy_2.png", "enemy_2", TheGame::Instance()->getRenderer())) return false;
+	if (!TheTextureManager::Instance()->load("Assets/enemy_3.png", "enemy_3", TheGame::Instance()->getRenderer())) return false;
+	if (!TheTextureManager::Instance()->load("Assets/bullet.png", "bullet", TheGame::Instance()->getRenderer())) return false;
 
-	if (!TheTextureManager::Instance()->load("Assets/Horizontal (2).png", "enemy1", TheGame::Instance()->getRenderer())) {
-		return false;
-	}
-
-	if (!TheTextureManager::Instance()->load("Assets/bullet2.png", "bullet", TheGame::Instance()->getRenderer())) {
-		return false;
-	}
-
-	m_gameObjects.push_back(new Player(new LoaderParams(250, 500, 64, 64, "animate", "Player")));
-	m_gameObjects.push_back(new Enemy(new LoaderParams(100, 100, 64, 64, "enemy1", "Enemy")));
-	m_gameObjects.push_back(new Enemy(new LoaderParams(200, 100, 64, 64, "enemy1", "Enemy")));
-	m_gameObjects.push_back(new Enemy(new LoaderParams(300, 100, 64, 64, "enemy1", "Enemy")));
-	m_gameObjects.push_back(new Enemy(new LoaderParams(400, 100, 64, 64, "enemy1", "Enemy")));
-	m_gameObjects.push_back(new Enemy(new LoaderParams(500, 100, 64, 64, "enemy1", "Enemy")));
+	SDLGameObject* player = new Player(new LoaderParams(360, 500, 64, 64, "player", "PLAYER")); m_gameObjects.push_back(player);
+	SDLGameObject* enemy1 = new Enemy(new LoaderParams(360, 100, 64, 64, "enemy_1", "ENEMY")); m_gameObjects.push_back(enemy1);
+	SDLGameObject* enemy2 = new Enemy(new LoaderParams(260, 100, 64, 64, "enemy_2", "ENEMY")); m_gameObjects.push_back(enemy2);
+	SDLGameObject* enemy3 = new Enemy(new LoaderParams(460, 100, 64, 64, "enemy_2", "ENEMY")); m_gameObjects.push_back(enemy3);
+	SDLGameObject* enemy4 = new Enemy(new LoaderParams(560, 100, 64, 64, "enemy_3", "ENEMY")); m_gameObjects.push_back(enemy4);
+	SDLGameObject* enemy5 = new Enemy(new LoaderParams(160, 100, 64, 64, "enemy_3", "ENEMY")); m_gameObjects.push_back(enemy5);
+	
 	std::cout << "entering PlayState\n";
 	return true;
 }
@@ -56,8 +51,11 @@ bool PlayState::onExit() {
 	}
 	m_gameObjects.clear();
 
-	TheTextureManager::Instance()->clearFromTextureMap("animated");
-	TheTextureManager::Instance()->clearFromTextureMap("enemy1");
+	TheTextureManager::Instance()->clearFromTextureMap("player");
+	TheTextureManager::Instance()->clearFromTextureMap("enemy_1");
+	TheTextureManager::Instance()->clearFromTextureMap("enemy_2");
+	TheTextureManager::Instance()->clearFromTextureMap("enemy_3");
+
 	std::cout << "exiting PlayState\n";
 	return true;
 }

@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "Projectile.h"
 using namespace std;
 
 Projectile::Projectile(const LoaderParams* pParams) :
@@ -21,14 +22,14 @@ void Projectile::update() {
 }
 
 void Projectile::Collide(SDLGameObject* pCollider) {
-	if (TheCollider::Instance()->Collision(this, pCollider) && pCollider->getTag() == "Enemy") {
-		std::vector<GameObject*>::iterator iter;
-		std::vector<GameObject*>::iterator iterEnd = TheGame::Instance()->getGameObjects()->end();
-		for (iter = TheGame::Instance()->getGameObjects()->begin(); iter != iterEnd; iter++)
+	if (TheCollider::Instance()->Collision(this, pCollider)) {
+		std::vector<SDLGameObject*>::iterator iter;
+		std::vector<SDLGameObject*>::iterator iterEnd = PlayState::Instance()->getGameObjects()->end();
+		for (iter = PlayState::Instance()->getGameObjects()->begin(); iter != iterEnd; iter++)
 		{
 			if (*iter == this)
 			{
-				TheGame::Instance()->getGameObjects()->erase(iter);
+				PlayState::Instance()->getGameObjects()->erase(iter);
 				break;      
 			}
 		}

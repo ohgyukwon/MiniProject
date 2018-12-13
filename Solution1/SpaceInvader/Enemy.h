@@ -2,8 +2,8 @@
 
 #include "SDLGameObject.h"
 #include "InputHandler.h"
-#include "TextureManager.h"
-#include "Game.h"
+#include "Collider.h"
+#include "PlayState.h"
 
 class Enemy : public SDLGameObject {
 public:
@@ -12,11 +12,6 @@ public:
 	virtual void update();
 	virtual void clean();
 	virtual void Collide(SDLGameObject* pCollider);
-	virtual int getPositionX() { return this->m_position.getX(); }
-	virtual int getPositionY() { return this->m_position.getY(); }
-	virtual int getWidth() { return this->m_width; }
-	virtual int getHeight() { return this->m_height; }
-	virtual std::string getTag() { return this->m_tag; };
 private:
 	void handleInput();
 };
