@@ -22,6 +22,7 @@ void Projectile::update() {
 }
 
 void Projectile::Collide(SDLGameObject* pCollider) {
+	pCollider->Collide(this);
 	if (TheCollider::Instance()->Collision(this, pCollider)) {
 		std::vector<SDLGameObject*>::iterator iter;
 		std::vector<SDLGameObject*>::iterator iterEnd = PlayState::Instance()->getGameObjects()->end();

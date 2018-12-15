@@ -25,18 +25,18 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 void Game::render() {
 	SDL_RenderClear(m_pRenderer);
-	//SDL_SetRenderDrawColor(m_pRenderer, 0, 150, 255, 255);	// ¹è°æ »ö±ò
 	m_pGameStateMachine->render();
-	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++) {
-		m_gameObjects[i]->draw();
-	}
 	SDL_RenderPresent(m_pRenderer);
+	//SDL_SetRenderDrawColor(m_pRenderer, 0, 150, 255, 255);	// ¹è°æ »ö±ò
+	//for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++) {
+	//	m_gameObjects[i]->draw();
+	//}
 }
 
 void Game::update() {
-	for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++) {
-		m_gameObjects[i]->update();
-	}
+	//for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++) {
+	//	m_gameObjects[i]->update();
+	//}
 	m_pGameStateMachine->update();
 }
 

@@ -30,12 +30,12 @@ void Enemy::handleInput() {
 void Enemy::Collide(SDLGameObject* pCollider) {
 	if (TheCollider::Instance()->Collision(this, pCollider)) {	// 충돌처리 함수 중복?
 		std::vector<SDLGameObject*>::iterator iter;
-		std::vector<SDLGameObject*>::iterator iterEnd = PlayState::Instance()->getGameObjects()->end();
-		for (iter = PlayState::Instance()->getGameObjects()->begin(); iter != iterEnd; iter++)
+		std::vector<SDLGameObject*>::iterator iterEnd = PlayState::Instance()->getEnemyObjects()->end();
+		for (iter = PlayState::Instance()->getEnemyObjects()->begin(); iter != iterEnd; iter++)
 		{
 			if (*iter == this)
 			{
-				PlayState::Instance()->getGameObjects()->erase(iter);
+				PlayState::Instance()->getEnemyObjects()->erase(iter);
 				break;
 			}
 		}

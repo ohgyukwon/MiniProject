@@ -24,8 +24,10 @@ public:
 	}
 	bool checkCollision(SDLGameObject* p1, SDLGameObject* p2);
 	std::vector<SDLGameObject*> *getGameObjects() { return &m_gameObjects; }
+	std::vector<SDLGameObject*> *getEnemyObjects() { return &m_enemyObjects; }
 private:
 	static const std::string s_playID;
 	static PlayState* s_pInstance;
 	std::vector<SDLGameObject*> m_gameObjects;
+	std::vector<SDLGameObject*> m_enemyObjects;
 };
