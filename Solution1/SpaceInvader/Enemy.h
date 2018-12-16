@@ -14,4 +14,6 @@ public:
 	virtual void Collide(SDLGameObject* pCollider);
 private:
 	void handleInput();
+	int originalX;
+	int goDistance;
 };

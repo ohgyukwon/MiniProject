@@ -29,6 +29,21 @@ void Player::handleInput() {
 		m_velocity.setX(-2);
 	}
 	if (TheInputHandler::Instance()->isKeyPressed(SDL_SCANCODE_SPACE)) {
-		PlayState::Instance()->getGameObjects()->push_back(new Projectile(new LoaderParams(this->m_position.getX() + 28, this->m_position.getY() - 20, 4, 24, "bullet", "BULLET")));
+		PlayState::Instance()->getGameObjects()->push_back(new Projectile(new LoaderParams(this->m_position.getX() + 30, this->m_position.getY() - 10, 2, 18, "bullet", "BULLET")));
 	}
 }
+
+//void Player::Collide(SDLGameObject* pCollider) {
+//	if (TheCollider::Instance()->Collision(this, pCollider)) {
+//		std::vector<SDLGameObject*>::iterator iter;
+//		std::vector<SDLGameObject*>::iterator iterEnd = PlayState::Instance()->getEnemyObjects()->end();
+//		for (iter = PlayState::Instance()->getEnemyObjects()->begin(); iter != iterEnd; iter++)
+//		{
+//			if (*iter == this)
+//			{
+//				PlayState::Instance()->getEnemyObjects()->erase(iter);
+//				break;
+//			}
+//		}
+//	}
+//}

@@ -26,11 +26,11 @@ void GameOverState::render() {
 bool GameOverState::onEnter() {
 	if (!TheTextureManager::Instance()->load("Assets/gameover.png", "gameoverText", TheGame::Instance()->getRenderer())) return false;
 	if (!TheTextureManager::Instance()->load("Assets/main.png", "mainButton", TheGame::Instance()->getRenderer())) return false;
-	if (!TheTextureManager::Instance()->load("Assets/restart.png", "restartButton", TheGame::Instance()->getRenderer())) return false;
+	if (!TheTextureManager::Instance()->load("Assets/re.png", "restartButton", TheGame::Instance()->getRenderer())) return false;
 
-	GameObject* gameOverText = new AnimatedGraphics(new LoaderParams(500, 200, 190, 30, "gameoverText", "TEXT"), 2);
-	GameObject* button1 = new MenuButton(new LoaderParams(100, 300, 400, 100, "mainButton", "BUTTON"), s_gameOverToMain);
-	GameObject* button2 = new MenuButton(new LoaderParams(100, 100, 200, 80, "restartButton", "BUTTON"), s_restartPlay);
+	GameObject* gameOverText = new AnimatedGraphics(new LoaderParams(300, 100, 190, 30, "gameoverText", "TEXT"), 2);
+	GameObject* button1 = new MenuButton(new LoaderParams(200, 400, 400, 100, "mainButton", "BUTTON"), s_gameOverToMain);
+	GameObject* button2 = new MenuButton(new LoaderParams(200, 200, 400, 100, "restartButton", "BUTTON"), s_restartPlay);
 	m_gameObjects.push_back(gameOverText);
 	m_gameObjects.push_back(button1);
 	m_gameObjects.push_back(button2);
