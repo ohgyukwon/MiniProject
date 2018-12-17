@@ -5,6 +5,8 @@
 #include "Game.h"
 #include "PauseState.h"
 #include "GameOverState.h"
+#include "Wall.h"
+#include "WinState.h"
 
 class GameObject;
 
@@ -22,7 +24,7 @@ public:
 		}
 		return s_pInstance;
 	}
-	bool checkCollision(SDLGameObject* p1, SDLGameObject* p2);
+	void increaseCount();
 	std::vector<SDLGameObject*> *getGameObjects() { return &m_gameObjects; }
 	std::vector<SDLGameObject*> *getEnemyObjects() { return &m_enemyObjects; }
 private:
@@ -30,4 +32,5 @@ private:
 	static PlayState* s_pInstance;
 	std::vector<SDLGameObject*> m_gameObjects;
 	std::vector<SDLGameObject*> m_enemyObjects;
+	int count;
 };

@@ -17,7 +17,7 @@ void Projectile::draw() {
 void Projectile::update() {
 	m_velocity.setX(0);
 	m_velocity.setY(0);
-	m_acceleration.setY(-8);
+	m_acceleration.setY(-4);
 	SDLGameObject::update();
 }
 
@@ -31,7 +31,8 @@ void Projectile::Collide(SDLGameObject* pCollider) {
 			if (*iter == this)
 			{
 				PlayState::Instance()->getGameObjects()->erase(iter);
-				break;      
+				Player::Instance()->BulletReady();
+				break;
 			}
 		}
 	}

@@ -44,6 +44,7 @@ void Enemy::Collide(SDLGameObject* pCollider) {
 			if (*iter == this)
 			{
 				PlayState::Instance()->getEnemyObjects()->erase(iter);
+				PlayState::Instance()->increaseCount();
 				break;
 			}
 		}

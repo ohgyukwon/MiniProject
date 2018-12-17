@@ -27,8 +27,8 @@ bool PauseState::onEnter() {
 	if (!TheTextureManager::Instance()->load("Assets/re.png", "restartButton", TheGame::Instance()->getRenderer())) return false;
 	if (!TheTextureManager::Instance()->load("Assets/main.png", "mainButton", TheGame::Instance()->getRenderer())) return false;
 
-	GameObject* button1 = new MenuButton(new LoaderParams(200, 300, 400, 100, "restartButton", "BUTTON"), s_resumePlay);
-	GameObject* button2 = new MenuButton(new LoaderParams(200, 100, 400, 100, "mainButton", "BUTTON"), s_pauseToMain);
+	GameObject* button1 = new MenuButton(new LoaderParams(200, 300, 400, 100, "restartButton"), s_resumePlay);
+	GameObject* button2 = new MenuButton(new LoaderParams(200, 100, 400, 100, "mainButton"), s_pauseToMain);
 	m_gameObjects.push_back(button1);
 	m_gameObjects.push_back(button2);
 	std::cout << "entering PauseState\n";

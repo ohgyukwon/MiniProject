@@ -1,7 +1,10 @@
 #include "Player.h"
 
+Player* Player::s_pInstance = 0;
+
 Player::Player(const LoaderParams* pParams) :
 	SDLGameObject(pParams) {
+	bulletReady = true;
 }
 
 void Player::draw() {
@@ -28,22 +31,16 @@ void Player::handleInput() {
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT)) {
 		m_velocity.setX(-2);
 	}
-	if (TheInputHandler::Instance()->isKeyPressed(SDL_SCANCODE_SPACE)) {
-		PlayState::Instance()->getGameObjects()->push_back(new Projectile(new LoaderParams(this->m_position.getX() + 30, this->m_position.getY() - 10, 2, 18, "bullet", "BULLET")));
+	if (TheInputHandler::Instance()->isKeyPressed(SDL_SCANCODE_SPACE) && bulletReady) {
+		PlayState::Instance()->getGameObjects()->push_back(new Projectile(new LoaderParams(this->m_position.getX() + 30, this->m_position.getY() - 15, 2, 18, "bullet")));
+		BulletNotReady();
 	}
 }
 
-//void Player::Collide(SDLGameObject* pCollider) {
-//	if (TheCollider::Instance()->Collision(this, pCollider)) {
-//		std::vector<SDLGameObject*>::iterator iter;
-//		std::vector<SDLGameObject*>::iterator iterEnd = PlayState::Instance()->getEnemyObjects()->end();
-//		for (iter = PlayState::Instance()->getEnemyObjects()->begin(); iter != iterEnd; iter++)
-//		{
-//			if (*iter == this)
-//			{
-//				PlayState::Instance()->getEnemyObjects()->erase(iter);
-//				break;
-//			}
-//		}
-//	}
-//}
+void Player::BulletReady() {
+	this->bulletReady = true;
+}
+
+void Player::BulletNotReady() {
+	this->bulletReady = false;
+}
